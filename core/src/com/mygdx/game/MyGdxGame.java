@@ -29,7 +29,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		//hc = new Hatredcopter(50,50);
 		sm = new StateManager();
 		thc = new TouchHatredCopter(50,50);
-		sm.push(new Ov1(sm));
+		sm.push(new Ov3(sm));
 
 	}
 

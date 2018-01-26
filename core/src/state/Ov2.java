@@ -2,6 +2,7 @@ package state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 
@@ -17,10 +18,12 @@ public class Ov2 extends State {
 
     private TouchHatredCopter thc;
 
+    private BitmapFont text;
 
     protected Ov2(StateManager sm) {
         super(sm);
         thc = new TouchHatredCopter(50,50);
+        text = new BitmapFont();
     }
 
     @Override
@@ -41,7 +44,7 @@ public class Ov2 extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(thc.getHatredCopter(), thc.getPos().x, thc.getPos().y);
-        thc.getText().draw(sb,MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+        thc.getText().draw(sb,thc.toString(),0,720);
         sb.end();
     }
 

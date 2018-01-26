@@ -96,24 +96,24 @@ public class AnimatedHatredCopter {
         int value = 10;
         /*Rectangle intersection = new Rectangle();
         Intersector.intersectRectangles(bounds, otherHeli, intersection);*/
-        if(!otherHeli.goRight){
+        if(!goRight){
           // pos.x += -value;
-            goRight = true;
+            otherHeli.setGoRight(true);
             //System.out.println("left");
         }
-        if(otherHeli.goRight){
+        if(goRight){
          // pos.x += value;
-            goRight = false;
+            otherHeli.setGoRight(false);
             //System.out.println("right");
         }
-        if(!otherHeli.goUp){
+        if(goUp){
           //  pos.y += -value;
-            goUp = true;
+            otherHeli.setGoUp(false);
             //System.out.println("Up");
         }
-        if(otherHeli.goUp){
+        if(!otherHeli.getGoUp()){
         //   pos.y += value;
-            goUp = false;
+            otherHeli.setGoUp(true);
             //System.out.println("Up");
         }
 
@@ -122,5 +122,16 @@ public class AnimatedHatredCopter {
     public Rectangle getBounds(){
         return bounds;
     }
-
+    public Boolean getGoRight(){
+        return goRight;
+    }
+    public void setGoRight(Boolean b){
+        goRight = b;
+    }
+    public Boolean getGoUp(){
+        return goUp;
+    }
+    public void setGoUp(Boolean b){
+        goUp = b;
+    }
 }

@@ -56,7 +56,7 @@ public class TouchHatredCopter {
     }
 
     public String toString(){
-        return "coord:" + pos.x + "." + pos.y;
+        return "coord: X:" + pos.x + "Y:" + pos.y;
     }
     public Sprite getHatredCopter() {
         return hatredCopter;
