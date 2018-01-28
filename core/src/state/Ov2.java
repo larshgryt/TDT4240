@@ -18,12 +18,9 @@ public class Ov2 extends State {
 
     private TouchHatredCopter thc;
 
-    private BitmapFont text;
-
     protected Ov2(StateManager sm) {
         super(sm);
         thc = new TouchHatredCopter(50,50);
-        text = new BitmapFont();
     }
 
     @Override

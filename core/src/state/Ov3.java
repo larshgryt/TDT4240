@@ -1,5 +1,6 @@
 package state;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import game.AnimatedHatredCopter;
@@ -23,7 +24,10 @@ public class Ov3 extends State {
 
     @Override
     public void handleInput() {
-
+        if(Gdx.input.justTouched()){
+            sm.set(new Ov4(sm));
+            dispose();
+        }
     }
 
     @Override
@@ -33,21 +37,15 @@ public class Ov3 extends State {
         ahc3.update(dt);
         if(ahc1.getBounds().overlaps(ahc2.getBounds())){
             ahc1.collision(ahc2);
-        }
-        if(ahc2.getBounds().overlaps(ahc1.getBounds())){
             ahc2.collision(ahc1);
         }
         if(ahc3.getBounds().overlaps(ahc1.getBounds())){
             ahc3.collision(ahc1);
-        }
-        if(ahc1.getBounds().overlaps(ahc3.getBounds())){
             ahc1.collision(ahc3);
         }
         if(ahc2.getBounds().overlaps(ahc3.getBounds())){
             ahc2.collision(ahc3);
-        }
-        if(ahc3.getBounds().overlaps(ahc2.getBounds())){
-            ahc3.collision(ahc2);
+            ahc3.collision(ahc3);
         }
     }
 
@@ -62,6 +60,8 @@ public class Ov3 extends State {
 
     @Override
     public void dispose() {
-
+        ahc1.dispose();
+        ahc2.dispose();
+        ahc3.dispose();
     }
 }

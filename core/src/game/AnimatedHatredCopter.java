@@ -134,4 +134,8 @@ public class AnimatedHatredCopter {
     public void setGoUp(Boolean b){
         goUp = b;
     }
+
+    public void dispose(){
+        hatred.dispose();
+    }
 }
