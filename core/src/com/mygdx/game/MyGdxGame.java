@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import game.TouchHatredCopter;
 import state.Ov1;
 import state.Ov3;
+import state.Ov4;
 import state.StateManager;
 
 public class MyGdxGame extends ApplicationAdapter {
@@ -29,7 +30,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		//hc = new Hatredcopter(50,50);
 		sm = new StateManager();
 		thc = new TouchHatredCopter(50,50);
-		sm.push(new Ov3(sm));
+		sm.push(new Ov1(sm));
 
 	}
 

@@ -20,6 +20,8 @@ public class Ov3 extends State {
         ahc2 = new AnimatedHatredCopter(4, 0.1f, 10,50, 5,"heli_1");
         ahc1 = new AnimatedHatredCopter(4,0.1f,200,200, 10,"heli_2");
         ahc3 = new AnimatedHatredCopter(4,0.1f,250,500,15,"heli_3");
+        //setter ikke random hastighet, men vil anta at det er mest for å hindre at noen "faker" kollisjoner, kan bruke math.random for å få
+        //tilfeldig hastighet på helikopterene.
     }
 
     @Override
@@ -32,6 +34,7 @@ public class Ov3 extends State {
 
     @Override
     public void update(float dt) {
+        handleInput();
         ahc1.update(dt);
         ahc2.update(dt);
         ahc3.update(dt);
@@ -45,7 +48,7 @@ public class Ov3 extends State {
         }
         if(ahc2.getBounds().overlaps(ahc3.getBounds())){
             ahc2.collision(ahc3);
-            ahc3.collision(ahc3);
+            ahc3.collision(ahc2);
         }
     }
 

@@ -3,6 +3,7 @@ package game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -93,29 +94,42 @@ public class AnimatedHatredCopter {
         return pos;
     }
    public void collision(AnimatedHatredCopter otherHeli){
-        int value = 10;
-        /*Rectangle intersection = new Rectangle();
-        Intersector.intersectRectangles(bounds, otherHeli, intersection);*/
-        if(!goRight){
-          // pos.x += -value;
-            otherHeli.setGoRight(true);
-            //System.out.println("left");
+       boolean sd = MathUtils.randomBoolean(); //setDirection
+       int value = 30;
+        Rectangle intersection = new Rectangle();
+        Intersector.intersectRectangles(bounds, otherHeli.getBounds(), intersection);
+        if(intersection.x > bounds.x){
+            goRight = false;
+            for(int i = 0;i<frameCount; i++){
+            frames.get(i).setFlip(false, false);
+        }}
+        if(intersection.x + intersection.width< bounds.x + bounds.width){
+            goRight = true;
+            for(int i=0;i<frameCount;i++){
+            frames.get(i).setFlip(true, false);
+        }}
+        if(intersection.y > bounds.y){
+            goUp = false;
+        }
+        if(intersection.y + intersection.height < bounds.y + bounds.height){
+            goUp = true;
+        }
+        /*if(!goRight){
+           pos.x += -value;
+            setGoRight(sd);
         }
         if(goRight){
-         // pos.x += value;
-            otherHeli.setGoRight(false);
-            //System.out.println("right");
-        }
+          pos.x += value;
+            setGoRight(sd);
+         }
         if(goUp){
-          //  pos.y += -value;
-            otherHeli.setGoUp(false);
-            //System.out.println("Up");
-        }
-        if(!otherHeli.getGoUp()){
-        //   pos.y += value;
-            otherHeli.setGoUp(true);
-            //System.out.println("Up");
-        }
+            pos.y += -value;
+            setGoUp(sd);
+         }
+        if(!goUp){
+           pos.y += value;
+            setGoUp(sd);
+         }*/
 
 
     }
