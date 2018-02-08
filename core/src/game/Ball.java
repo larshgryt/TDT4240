@@ -18,18 +18,17 @@ public class Ball {
     private int velocityVertical;
     private int velocityHorizontal;
     private Rectangle bounds;
-    private Paddle paddle;
 
-    public Ball(int vert, int hori){
-        velocityVertical = vert;
-        velocityHorizontal = hori;
+    private Ball(){
+        velocityVertical = 10;
+        velocityHorizontal = 10;
         posBall = new Vector3(200,400,0);
         ball = new Texture("pongBall.PNG");
         bounds = new Rectangle(posBall.x, posBall.y, ball.getWidth(), ball.getHeight());
     }
     public static Ball getInstance(){
         if(singleBall == null){
-            singleBall = new Ball(10,10);
+            singleBall = new Ball();
         }
         return singleBall;
     }

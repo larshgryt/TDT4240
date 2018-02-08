@@ -26,15 +26,11 @@ public class Ov1 extends State {
             dispose();
         }
     }
-
     @Override
     public void update(float dt) {
         handleInput();
         hc.update(dt);
     }
-    /*public void create(){
-        button = new TextButton("Ov1", null, null);
-    }*/
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
