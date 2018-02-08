@@ -21,11 +21,12 @@ public class Ov4 extends State {
     public BitmapFont score2;
     public int scoreToGet = 5; //Du er velkommen til å sette denne til 21, men Pong er vel ikke egentlig SÅ interessant
     public int hitCount = 0;
+
     public Ov4(StateManager sm) {
         super(sm);
         paddle1 = new Paddle(15, 400, 1, 15);
         paddle2 = new Paddle(450,400,2, 15);
-        ball =  new Ball(10, 10);
+        ball = Ball.getInstance();
         score1 = new BitmapFont();
         score2 = new BitmapFont();
     }

@@ -11,6 +11,8 @@ import com.mygdx.game.MyGdxGame;
 
 public class Ball {
 
+    private static Ball singleBall = null;
+
     private Vector3 posBall;
     private Texture ball;
     private int velocityVertical;
@@ -24,6 +26,12 @@ public class Ball {
         posBall = new Vector3(200,400,0);
         ball = new Texture("pongBall.PNG");
         bounds = new Rectangle(posBall.x, posBall.y, ball.getWidth(), ball.getHeight());
+    }
+    public static Ball getInstance(){
+        if(singleBall == null){
+            singleBall = new Ball(10,10);
+        }
+        return singleBall;
     }
     public void update(float dt){
         posBall.add(velocityHorizontal, velocityVertical,0);
