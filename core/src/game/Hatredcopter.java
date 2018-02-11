@@ -34,7 +34,7 @@ public class Hatredcopter implements Subject {
         hatredCopter = new Texture("attackhelicopter.PNG");
         hatred = new Sprite(hatredCopter);
         observers = new ArrayList<Observer>();
-        hcObserver = new HatredObserver(this);
+        hcObserver = new HatredObserver();
         register(hcObserver);
 
     }
@@ -43,9 +43,11 @@ public class Hatredcopter implements Subject {
 
         if(pos.x >= MyGdxGame.WIDTH - hatredCopter.getWidth()|| pos.x <= 0){
             notifyObserver(true, false);
+            horiVel = -horiVel;
         }
         if(pos.y>= MyGdxGame.HEIGHT - hatredCopter.getHeight() || pos.y <= 0){
             notifyObserver(false, true);
+            vertiVel = -vertiVel;
         }
         pos.add(horiVel, vertiVel,0);
     }
@@ -62,6 +64,7 @@ public class Hatredcopter implements Subject {
     }
     public void dispose(){
         hatredCopter.dispose();
+        unregister(hcObserver);
     }
 
 
@@ -81,26 +84,5 @@ public class Hatredcopter implements Subject {
             observer.update(horiHit, vertHit);
         }
     }
-    public void setHoriVel(){
-        horiVel = -horiVel;
-    }
-    public void setVertiVel(){
-        vertiVel = -vertiVel;
-    }
 
-    public int getHoriVel() {
-        return horiVel;
-    }
-
-    public int getVertiVel() {
-        return vertiVel;
-    }
-
-    public boolean isGoRight() {
-        return goRight;
-    }
-
-    public boolean isGoUp() {
-        return goUp;
-    }
 }

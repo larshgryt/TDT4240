@@ -6,19 +6,18 @@ package game;
 
 public class HatredObserver implements Observer {
 
-    private Hatredcopter hatred;
+    private int vertiHits;
+    private int horiHits;
 
-    public HatredObserver(Hatredcopter hatred){
-        this.hatred = hatred;
-
-    }
     @Override
     public void update(boolean right, boolean up) {
         if(right){
-            hatred.setHoriVel();
+            horiHits++;
+            System.out.println("Horizontal walls hit: " + horiHits);
         }
         if(up){
-            hatred.setVertiVel();
+            vertiHits++;
+            System.out.println("Vertical walls hit: " + vertiHits);
         }
     }
 }
