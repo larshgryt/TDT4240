@@ -19,10 +19,7 @@ public class Hatredcopter implements Subject {
 
     private int horiVel;
     private int vertiVel;
-    private boolean goRight;
-    private boolean goUp;
     private ArrayList<Observer> observers;
-    private HatredObserver hcObserver;
 
     public Texture hatredCopter;
     public Sprite hatred;
@@ -34,9 +31,6 @@ public class Hatredcopter implements Subject {
         hatredCopter = new Texture("attackhelicopter.PNG");
         hatred = new Sprite(hatredCopter);
         observers = new ArrayList<Observer>();
-        hcObserver = new HatredObserver();
-        register(hcObserver);
-
     }
 
     public void update(float dt){
@@ -64,7 +58,9 @@ public class Hatredcopter implements Subject {
     }
     public void dispose(){
         hatredCopter.dispose();
-        unregister(hcObserver);
+        for (Observer observer : observers){
+            unregister(observer);
+        }
     }
 
 

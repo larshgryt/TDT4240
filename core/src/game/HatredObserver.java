@@ -6,9 +6,12 @@ package game;
 
 public class HatredObserver implements Observer {
 
-    private int vertiHits;
-    private int horiHits;
+    private static int vertiHits;
+    private static int horiHits;
 
+    public HatredObserver(Hatredcopter hc2){
+        hc2.register(this);
+    }
     @Override
     public void update(boolean right, boolean up) {
         if(right){
@@ -20,4 +23,5 @@ public class HatredObserver implements Observer {
             System.out.println("Vertical walls hit: " + vertiHits);
         }
     }
+
 }
